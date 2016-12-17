@@ -4,9 +4,12 @@ import {
 	Text,
 	StyleSheet,
 	TextInput,
-	TouchableOpacity
+	TouchableOpacity, 
+	Dimensions
 } from 'react-native';
 
+
+const {width, height} = Dimensions.get('window');
 export class Todo extends Component{
 	constructor() {
 		super();
@@ -21,7 +24,7 @@ export class Todo extends Component{
 
 	handlePress(){
 		const todos = [...this.state.todos, this.state.newTodo];
-		this.setState({todos, newTodo: ''})
+		this.setState({todos, newTodo: ''});
 	}
 	render() {
 		return(
@@ -32,8 +35,9 @@ export class Todo extends Component{
 					style={styles.input}/>
 
 				<TouchableOpacity 
-					style={styles.button} onPress={this.handlePress.bind(this)}>
-					<Text>create</Text>
+					style={styles.button} 
+					onPress={this.handlePress.bind(this)}>
+					<Text style={styles.buttonText}>create task</Text>
 				</TouchableOpacity>
 				<View>
 					{this.state.todos.map((todo, i) => (
@@ -47,20 +51,31 @@ export class Todo extends Component{
 const styles = StyleSheet.create({
 	container : {
 		flex: 1,
-		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#D4BEE9'
+		backgroundColor: '#2F608E',
+		padding: 7,
 	},
 	button: {
-		backgroundColor: 'pink',
+		borderWidth: 1,
+		borderColor: 'black',
+		borderRadius: 3,
+		backgroundColor: '#030807',
+		justifyContent: 'center',
 		marginTop: 15
+		},
 		
-	},
 	input: {
 		height: 44,
 		backgroundColor: '#F6EBE4',
 		marginRight: 3,
 		marginLeft: 3,
+		marginTop: 35,
 		borderRadius: 7
+	},
+	buttonText:{
+		color: 'white',
+		fontSize: 25,
+		padding: 5
 	}
 })
+
