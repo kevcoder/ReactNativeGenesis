@@ -39,9 +39,9 @@ export class Todo extends Component{
 					onPress={this.handlePress.bind(this)}>
 					<Text style={styles.buttonText}>create task</Text>
 				</TouchableOpacity>
-				<View>
+				<View style={styles.todos}>
 					{this.state.todos.map((todo, i) => (
-						<Text key={i}>{todo}</Text>
+						<Text key={i} style={styles.todo}>{todo}</Text>
 						))}
 				</View>
 			</View>
@@ -70,12 +70,22 @@ const styles = StyleSheet.create({
 		marginRight: 3,
 		marginLeft: 3,
 		marginTop: 35,
-		borderRadius: 7
+		borderRadius: 7,
+		fontSize: 25
 	},
 	buttonText:{
 		color: 'white',
 		fontSize: 25,
+		fontWeight: 'bold',
 		padding: 5
+	},
+	todos: {
+		marginTop: 35,
+	},
+	todo: {
+		color: 'white',
+		fontSize: 20,
+		paddingRight: 200
 	}
 })
 
